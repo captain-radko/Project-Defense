@@ -1,10 +1,13 @@
-﻿using IdeGames.Web.Areas.Identity.Data;
+﻿using IdeGames.Data;
+using IdeGames.Data.Models;
+using IdeGames.Services;
+using IdeGames.Services.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using IdeGames.Web.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,8 +36,18 @@ namespace IdeGames.Web
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdeGamesUser>()
-                .AddEntityFrameworkStores<IdeGamesContext>();
+            services.AddIdentity<IdeGamesUser, IdentityRole>()
+                .AddEntityFrameworkStores<IdeGamesContext>()
+                .AddDefaultTokenProviders();
+
+            //TODO:Add services here
+            services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
+            {
+                microsoftOptions.ClientId = Configuration["ApplicationId"];
+                microsoftOptions.ClientSecret = Configuration["ApplicationSecret"];
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

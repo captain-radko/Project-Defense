@@ -7,12 +7,15 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="2.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\Services\" />
+    <ProjectReference Include="..\..\Data\IdeGames.Data.Models\IdeGames.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\IdeGames.Data\IdeGames.Data.csproj" />
+    <ProjectReference Include="..\..\Services\IdeGames.Services\IdeGames.Services.csproj" />
   </ItemGroup>
 
 </Project>

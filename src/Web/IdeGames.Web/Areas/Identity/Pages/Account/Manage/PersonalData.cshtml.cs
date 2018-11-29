@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using IdeGames.Web.Areas.Identity.Data;
+using IdeGames.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

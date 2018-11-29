@@ -16,6 +16,8 @@ namespace IdeGames.Data.Models
 
         public string Description { get; set; }
 
+        public byte[] Image { get; set; }
+
         public ICollection<Comment> Comment { get; set; }
     }
 }

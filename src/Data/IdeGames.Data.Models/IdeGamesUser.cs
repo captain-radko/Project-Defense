@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Policy;
 using Microsoft.AspNetCore.Identity;
 
 namespace IdeGames.Data.Models
@@ -15,6 +14,8 @@ namespace IdeGames.Data.Models
         }
 
         public string FullName { get; set; }
+
+        public byte[] ProfilePicture { get; set; }
 
         public DateTime RegisteredOn { get; set; }
 

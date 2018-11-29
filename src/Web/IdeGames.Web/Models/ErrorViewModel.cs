@@ -1,5 +1,3 @@
-using System;
-
 namespace IdeGames.Web.Models
 {
     public class ErrorViewModel

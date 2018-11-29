@@ -19,6 +19,48 @@ namespace IdeGames.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("IdeGames.Data.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorId");
+
+                    b.Property<int?>("GameId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.Game", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("IdeGamesUserId");
+
+                    b.Property<byte[]>("Image");
+
+                    b.Property<string>("Name");
+
+                    b.Property<decimal>("Price");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdeGamesUserId");
+
+                    b.ToTable("Games");
+                });
+
             modelBuilder.Entity("IdeGames.Data.Models.IdeGamesUser", b =>
                 {
                     b.Property<string>("Id")
@@ -33,6 +75,8 @@ namespace IdeGames.Data.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FullName");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -49,6 +93,10 @@ namespace IdeGames.Data.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<byte[]>("ProfilePicture");
+
+                    b.Property<DateTime>("RegisteredOn");
 
                     b.Property<string>("SecurityStamp");
 
@@ -68,6 +116,23 @@ namespace IdeGames.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.News", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<string>("Name");
+
+                    b.Property<DateTime>("PublishedOn");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("News");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -178,6 +243,24 @@ namespace IdeGames.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.Comment", b =>
+                {
+                    b.HasOne("IdeGames.Data.Models.IdeGamesUser", "Author")
+                        .WithMany("Comments")
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("IdeGames.Data.Models.Game")
+                        .WithMany("Comment")
+                        .HasForeignKey("GameId");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.Game", b =>
+                {
+                    b.HasOne("IdeGames.Data.Models.IdeGamesUser")
+                        .WithMany("Games")
+                        .HasForeignKey("IdeGamesUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

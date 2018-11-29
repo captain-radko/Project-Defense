@@ -1,4 +1,6 @@
-﻿@inject SignInManager<IdeGamesUser> SignInManager
+﻿@using IdeGames.Data.Models
+
+@inject SignInManager<IdeGamesUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
