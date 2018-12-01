@@ -6,6 +6,10 @@ namespace IdeGames.Data
 {
     public class IdeGamesContext : IdentityDbContext<IdeGamesUser>
     {
+        public IdeGamesContext()
+        {
+        }
+
         public IdeGamesContext(DbContextOptions<IdeGamesContext> options)
             : base(options)
         {

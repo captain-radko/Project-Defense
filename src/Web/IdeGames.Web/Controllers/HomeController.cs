@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using IdeGames.Web.Models;
+using IdeGames.Web.Models.Home;
 
 namespace IdeGames.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public IActionResult Index()
         {
