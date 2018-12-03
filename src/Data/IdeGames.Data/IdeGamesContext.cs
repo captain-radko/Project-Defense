@@ -6,12 +6,17 @@ namespace IdeGames.Data
 {
     public class IdeGamesContext : IdentityDbContext<IdeGamesUser>
     {
-        public IdeGamesContext()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlServer(@"Server=.\SQLExpress;Database=IdeGames;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
 
         public IdeGamesContext(DbContextOptions<IdeGamesContext> options)
             : base(options)
+        {
+        }
+
+        public IdeGamesContext()
         {
         }
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - IdeGames.Web</title>
 
+
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
         <link rel="stylesheet" href="~/css/site.css"/>
@@ -16,7 +17,7 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
     </environment>
 </head>
-<body style="background-color: black">
+<body @*style="background-color: black"*@>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -27,7 +28,8 @@
                 <span class="icon-bar"></span>
             </button>
             <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
-                <img src="Logo.jpg" height="30" width="175"/>
+                IdeGames.Web
+                @*<img src="Logo.jpg" height="30" width="175"/>*@
             </a>
         </div>
         <div class="navbar-collapse collapse">

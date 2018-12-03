@@ -1,8 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using IdeGames.Services.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 using IdeGames.Web.Models;
-using IdeGames.Web.Models.Home;
 
 namespace IdeGames.Web.Controllers
 {
@@ -10,7 +11,19 @@ namespace IdeGames.Web.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var viewModel = this.Db.News.Select(x =>
+                new NewsViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Content = x.Content,
+                    PublishedOn = x.PublishedOn
+                });
+            var model = new IndexViewModel
+            {
+                News = viewModel
+            };
+            return View(model);
         }
 
         public IActionResult About()
