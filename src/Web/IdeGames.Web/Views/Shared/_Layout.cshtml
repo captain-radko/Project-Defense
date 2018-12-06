@@ -28,7 +28,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
-                IdeGames.Web
+                IdeGames
                 @*<img src="Logo.jpg" height="30" width="175"/>*@
             </a>
         </div>
@@ -38,11 +38,27 @@
                     <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
                 <li>
+                    <a asp-area="" asp-controller="Games" asp-action="Index">Store</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="" asp-action="">Forum</a>
+                </li>
+                <li>
                     <a asp-area="" asp-controller="Home" asp-action="About">About</a>
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                 </li>
+                @*TODO:Add security check here*@
+                <li>
+                    <a asp-area="" asp-controller="" asp-action="">Administration</a>
+                </li>
+                @*<li>
+            <form class="form-inline my-2 my-lg-0 mt-5">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </li>*@
             </ul>
             <partial name="_LoginPartial"/>
         </div>
@@ -55,7 +71,7 @@
     @RenderBody()
     <hr/>
     <footer>
-        <p>&copy; 2018 - IdeGames.Web</p>
+        <p>&copy; 2018 - captain-radko. All rights reserved.</p>
     </footer>
 </div>
 

@@ -19,8 +19,7 @@ namespace IdeGames.Web.Controllers
                     Id = x.Id,
                     Name = x.Name,
                     Content = x.Content,
-                    PublishedOn = x.PublishedOn,
-                    Image = x.Image
+                    PublishedOn = x.PublishedOn
                 });
             var model = new IndexViewModel
             {

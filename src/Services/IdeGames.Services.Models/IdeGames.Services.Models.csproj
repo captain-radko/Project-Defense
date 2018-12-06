@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\IdeGames.Data.Common\IdeGames.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\IdeGames.Data.Models\IdeGames.Data.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -4,14 +4,16 @@ using IdeGames.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IdeGames.Data.Migrations
 {
     [DbContext(typeof(IdeGamesContext))]
-    partial class IdeGamesContextModelSnapshot : ModelSnapshot
+    [Migration("20181206201348_GameModelUpdated")]
+    partial class GameModelUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

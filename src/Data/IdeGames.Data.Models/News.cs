@@ -10,7 +10,5 @@ namespace IdeGames.Data.Models
         public string Content { get; set; }
 
         public DateTime PublishedOn { get; set; }
-
-        public byte[] Image { get; set; }
     }
 }
