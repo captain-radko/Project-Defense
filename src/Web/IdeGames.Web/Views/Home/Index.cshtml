@@ -61,7 +61,7 @@
     <div class="row mt-5 mb-5" style="overflow-y: auto;">
         <div class="col">
             <h1>News</h1>
-            <hr style="background-color: lightblue; height: 3px"/>
+            <hr style="background-color: lightblue; height: 1px"/>
         </div>
         @foreach (var n in Model.News)
         {
@@ -76,7 +76,7 @@
                     <div class="panel-footer">
                         @n.PublishedOn
                         <p align="right">
-                            <a class="btn btn-primary" asp-controller="News" asp-action="Details">Read More</a>
+                            <a class="btn btn-info" asp-controller="News" asp-action="Details" asp-route-id="@n.Id">Read More</a>
                         </p>
                     </div>
                 </div>

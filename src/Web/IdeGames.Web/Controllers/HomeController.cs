@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using IdeGames.Services.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 using IdeGames.Web.Models;
+using IdeGames.Services.Models.Models.Home;
 
 namespace IdeGames.Web.Controllers
 {
@@ -11,13 +11,16 @@ namespace IdeGames.Web.Controllers
     {
         public IActionResult Index()
         {
-            var viewModel = this.Db.News.Select(x =>
+            var viewModel = this.Db.News
+                .OrderByDescending(d => d.PublishedOn)
+                .Select(x =>
                 new NewsViewModel
                 {
                     Id = x.Id,
                     Name = x.Name,
                     Content = x.Content,
-                    PublishedOn = x.PublishedOn
+                    PublishedOn = x.PublishedOn,
+                    Image = x.Image
                 });
             var model = new IndexViewModel
             {

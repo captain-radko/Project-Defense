@@ -126,6 +126,8 @@ namespace IdeGames.Data.Migrations
 
                     b.Property<string>("Content");
 
+                    b.Property<byte[]>("Image");
+
                     b.Property<string>("Name");
 
                     b.Property<DateTime>("PublishedOn");

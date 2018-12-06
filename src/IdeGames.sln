@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdeGames.Data.Common", "Dat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{45A38272-5499-47F1-B51C-309CA07C57B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeGames.Services", "Services\IdeGames.Services\IdeGames.Services.csproj", "{F160977D-ABE3-4594-9AA4-5BBA6EB2304C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdeGames.Services", "Services\IdeGames.Services\IdeGames.Services.csproj", "{F160977D-ABE3-4594-9AA4-5BBA6EB2304C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeGames.Services.Models", "Services\IdeGames.Services.Models\IdeGames.Services.Models.csproj", "{6B3C4417-5F90-4C87-B86E-3F75C13C69A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F160977D-ABE3-4594-9AA4-5BBA6EB2304C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F160977D-ABE3-4594-9AA4-5BBA6EB2304C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F160977D-ABE3-4594-9AA4-5BBA6EB2304C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B3C4417-5F90-4C87-B86E-3F75C13C69A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B3C4417-5F90-4C87-B86E-3F75C13C69A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B3C4417-5F90-4C87-B86E-3F75C13C69A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B3C4417-5F90-4C87-B86E-3F75C13C69A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{CA91AF3A-5BC6-4EFE-9C3E-B35D3063F578} = {2D03BD43-AF3E-4FDC-AE3D-D41859295371}
 		{3EA1E537-B724-4007-909A-FA59ED45F0FB} = {2D03BD43-AF3E-4FDC-AE3D-D41859295371}
 		{F160977D-ABE3-4594-9AA4-5BBA6EB2304C} = {45A38272-5499-47F1-B51C-309CA07C57B3}
+		{6B3C4417-5F90-4C87-B86E-3F75C13C69A0} = {45A38272-5499-47F1-B51C-309CA07C57B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96020B6B-9870-40A4-8996-E605A45396E1}
