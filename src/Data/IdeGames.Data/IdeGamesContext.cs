@@ -22,8 +22,6 @@ namespace IdeGames.Data
 
         public DbSet<Game> Games { get; set; }
 
-        public DbSet<Comment> Comments { get; set; }
-
         public DbSet<News> News { get; set; }
     }
 }

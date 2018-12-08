@@ -10,7 +10,6 @@ namespace IdeGames.Data.Models
         public IdeGamesUser()
         {
             this.Games = new HashSet<Game>();
-            this.Comments = new List<Comment>();
         }
 
         public string FullName { get; set; }
@@ -20,7 +19,5 @@ namespace IdeGames.Data.Models
         public DateTime RegisteredOn { get; set; }
 
         public ICollection<Game> Games { get; set; }
-
-        public ICollection<Comment> Comments { get; set; }
     }
 }

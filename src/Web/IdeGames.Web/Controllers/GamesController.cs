@@ -15,9 +15,11 @@ namespace IdeGames.Web.Controllers
             var viewModel = this.Db.Games
                 .Select(x =>
                     new GamesViewModel
-                    {
+                    { 
+                        Id = x.Id,
                         Name = x.Name,
-                        Description = x.ShortDescription
+                        Price = x.Price,
+                        ImageUrl = x.ImageUrl
                     });
             var model = new IndexGamesViewModel
             {

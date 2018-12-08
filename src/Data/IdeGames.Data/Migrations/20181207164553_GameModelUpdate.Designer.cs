@@ -4,20 +4,41 @@ using IdeGames.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IdeGames.Data.Migrations
 {
     [DbContext(typeof(IdeGamesContext))]
-    partial class IdeGamesContextModelSnapshot : ModelSnapshot
+    [Migration("20181207164553_GameModelUpdate")]
+    partial class GameModelUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("IdeGames.Data.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorId");
+
+                    b.Property<int?>("GameId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("Comments");
+                });
 
             modelBuilder.Entity("IdeGames.Data.Models.Game", b =>
                 {
@@ -224,6 +245,17 @@ namespace IdeGames.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.Comment", b =>
+                {
+                    b.HasOne("IdeGames.Data.Models.IdeGamesUser", "Author")
+                        .WithMany("Comments")
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("IdeGames.Data.Models.Game")
+                        .WithMany("Comment")
+                        .HasForeignKey("GameId");
                 });
 
             modelBuilder.Entity("IdeGames.Data.Models.Game", b =>

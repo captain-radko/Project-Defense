@@ -4,6 +4,40 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Welcome Wizard</h1>
 
 
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Welcome Wizard</h1>
+            <hr style="background-color: black; height: 1px"/>
+        </div>
+        @foreach (var game in Model.Games)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="hovereffect">
+                    @if (@game.Name == "Visual Studio")
+                    {
+                        <img class="img-responsive" src="/images/games/VisualStudioLogo.jpg" alt="">
+                    }
+                    @if (@game.Name == "WebStorm")
+                    {
+                        <img class="img-responsive" src="/images/games/WebStormLogo.png" alt="">
+                    }
+                    @if (@game.Name == "PyCharm")
+                    {
+                        <img class="img-responsive" src="/images/games/PyCharmLogo.jpg" alt="">
+                    }
+                    @if (@game.Name == "IntelliJ IDEA")
+                    {
+                        <img class="img-responsive" src="/images/games/IntellijIDEALogo.png" alt="">
+                    }
+                    <div class="overlay">
+                        <a class="info" href="#">Info</a>
+                        <a class="info" href="#">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

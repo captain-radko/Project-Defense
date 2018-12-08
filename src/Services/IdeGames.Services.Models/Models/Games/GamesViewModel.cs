@@ -14,23 +14,6 @@ namespace IdeGames.Services.Models.Models.Games
 
         public string Description { get; set; }
 
-        public string ShortDescription
-        {
-            get
-            {
-                if (this.Description?.Length > 310)
-                {
-                    return this.Description.Substring(0, 310) + "...";
-                }
-                else
-                {
-                    return this.Description;
-                }
-            }
-        }
-
-        public byte[] Image { get; set; }
-
-        public ICollection<Comment> Comments { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
