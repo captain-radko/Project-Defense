@@ -5,7 +5,6 @@
 }
 
 
-
 <div class="container">
     <div class="row">
         <div class="col">
@@ -16,6 +15,10 @@
         {
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="hovereffect">
+                    @if (@game.Name == "IntelliJ IDEA")
+                    {
+                        <img class="img-responsive" src="/images/games/IntellijIDEALogo.png" alt="">
+                    }
                     @if (@game.Name == "Visual Studio")
                     {
                         <img class="img-responsive" src="/images/games/VisualStudioLogo.jpg" alt="">
@@ -28,13 +31,13 @@
                     {
                         <img class="img-responsive" src="/images/games/PyCharmLogo.jpg" alt="">
                     }
-                    @if (@game.Name == "IntelliJ IDEA")
-                    {
-                        <img class="img-responsive" src="/images/games/IntellijIDEALogo.png" alt="">
-                    }
                     <div class="overlay">
                         <a class="info" href="#">Info</a>
                         <a class="info" href="#">Add to cart</a>
+                        <div class="info" style="margin-top: 200px">
+                            <strong>@game.Price$</strong>
+                        </div>
+                       
                     </div>
                 </div>
             </div>
