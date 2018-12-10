@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using IdeGames.Data;
-using IdeGames.Data.Models;
 using IdeGames.Services.Contracts;
-using IdeGames.Services.Models.Models.Home;
 using IdeGames.Services.Models.Models.News;
-using Microsoft.AspNetCore.Mvc;
 
 namespace IdeGames.Services
 {
