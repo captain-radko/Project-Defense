@@ -7,6 +7,6 @@ namespace IdeGames.Services.Contracts
 {
     public interface IGamesService
     {
-        
+        GamesDetailsViewModel GetGameById(int id);
     }
 }

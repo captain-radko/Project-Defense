@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using IdeGames.Services.Contracts;
-using IdeGames.Services.Models.Models.Home;
-using IdeGames.Services.Models.Models.News;
+﻿using IdeGames.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdeGames.Web.Controllers

@@ -32,7 +32,7 @@
                         <img class="img-responsive" src="/images/games/PyCharmLogo.jpg" alt="">
                     }
                     <div class="overlay">
-                        <a class="info" href="#">Info</a>
+                        <a class="info" asp-controller="Games" asp-action="Info" asp-route-id="@game.Id">Info</a>
                         <a class="info" href="#">Add to cart</a>
                         <div class="info" style="margin-top: 200px">
                             <strong>@game.Price$</strong>

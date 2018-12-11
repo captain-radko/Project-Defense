@@ -10,6 +10,13 @@ namespace IdeGames.Web.Controllers
 {
     public class GamesController : BaseController
     {
+        private readonly IGamesService gamesService;
+
+        public GamesController(IGamesService gamesService)
+        {
+            this.gamesService = gamesService;
+        }
+
         public IActionResult Index()
         {
             var viewModel = this.Db.Games
@@ -18,8 +25,7 @@ namespace IdeGames.Web.Controllers
                     { 
                         Id = x.Id,
                         Name = x.Name,
-                        Price = x.Price,
-                        ImageUrl = x.ImageUrl
+                        Price = x.Price
                     });
             var model = new IndexGamesViewModel
             {
@@ -27,6 +33,12 @@ namespace IdeGames.Web.Controllers
             };
 
             return View(model);
+        }
+
+        public IActionResult Info(int id)
+        {
+            var game = this.gamesService.GetGameById(id);
+            return this.View(game);
         }
     }
 }
