@@ -1,0 +1,20 @@
+﻿@model IdeGames.Services.Models.Models.Games.GamesDetailsViewModel
+
+@{
+    ViewData["Title"] = "Info";
+}
+
+<h1>Game Info</h1>
+
+<div class="container">
+    <h3>@Model.Name</h3>
+    <hr style="background-color: black; height: 1px" />
+    @if (Model.Description == null)
+    {
+        <p>No description available</p>
+    }
+    <p>@Model.Description</p>
+    <div>
+        <a class="btn btn-primary" asp-controller="Games" asp-action="Index">Back to Store</a>
+    </div>
+</div>

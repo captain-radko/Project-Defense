@@ -1,4 +1,7 @@
-﻿@model IdeGames.Services.Models.Models.Games.IndexGamesViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@model IdeGames.Services.Models.Models.Games.IndexGamesViewModel
+
+@inject SignInManager<IdeGamesUser> SignInManager
 
 @{
     ViewData["Title"] = "Index";
@@ -33,13 +36,20 @@
                     }
                     <div class="overlay">
                         <a class="info" asp-controller="Games" asp-action="Info" asp-route-id="@game.Id">Info</a>
-                        <a class="info" href="#">Add to cart</a>
-                        <div class="info" style="margin-top: 200px">
-                            <strong>@game.Price$</strong>
-                        </div>
-                       
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <a class="info" href="#">Add to cart</a>
+                            
+                            <div class="info" style="margin-top: 200px">
+                                <strong>@game.Price$</strong>
+                            </div>
+                        }
                     </div>
                 </div>
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+                {
+                    <a class="btn btn-danger" style="margin-top: 5px" asp-controller="Games" asp-action="Delete" asp-route-id="@game.Id">Delete Game</a>
+                }
             </div>
         }
     </div>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IdeGames.Services.Contracts;
 using IdeGames.Services.Models.Models.Games;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdeGames.Web.Controllers
@@ -39,6 +40,18 @@ namespace IdeGames.Web.Controllers
         {
             var game = this.gamesService.GetGameById(id);
             return this.View(game);
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Delete(int id)
+        {
+            var game = this.Db.Games.FirstOrDefault(g => g.Id == id);
+
+            this.Db.Remove(game ?? throw new InvalidOperationException());
+
+            this.Db.SaveChanges();
+
+            return this.Redirect("/Administration/AdminIndex");
         }
     }
 }

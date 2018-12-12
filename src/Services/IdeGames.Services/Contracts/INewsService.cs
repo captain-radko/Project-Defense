@@ -10,5 +10,7 @@ namespace IdeGames.Services.Contracts
     public interface INewsService
     {
         NewsDetailsViewModel GetNewsById(int id);
+
+        News CreateNews(CreateNewsInputModel model);
     }
 }

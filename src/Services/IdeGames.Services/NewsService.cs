@@ -1,6 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using IdeGames.Data;
+using IdeGames.Data.Models;
 using IdeGames.Services.Contracts;
+using IdeGames.Services.Models.Models.Home;
 using IdeGames.Services.Models.Models.News;
 
 namespace IdeGames.Services
@@ -23,6 +27,18 @@ namespace IdeGames.Services
                     Content = x.Content,
                     PublishedOn = x.PublishedOn
                 }).FirstOrDefault();
+            return news;
+        }
+
+        public News CreateNews(CreateNewsInputModel model)
+        {
+            var news  = new News
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Content = model.Description,
+                PublishedOn = model.PublishedOn
+            };
             return news;
         }
     }

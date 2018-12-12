@@ -1,4 +1,8 @@
-﻿@model IdeGames.Services.Models.Models.Home.IndexViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@model IdeGames.Services.Models.Models.Home.IndexViewModel
+
+@inject SignInManager<IdeGamesUser> SignInManager
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -73,10 +77,16 @@
                     <div class="panel-body">
                         @n.ShortContent
                     </div>
-                    <div class="panel-footer">
-                        @n.PublishedOn
-                        <p align="right">
+                    <div class=" panel-footer">
+                        <p style="margin: 5px">
                             <a class="btn btn-info" asp-controller="News" asp-action="Details" asp-route-id="@n.Id">Read More</a>
+                            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+                            {
+                                <a class="btn btn-danger" asp-controller="News" asp-action="Delete" asp-route-id="@n.Id">Delete</a>
+                            }
+                        </p>
+                        <p align="right">
+                            @n.PublishedOn
                         </p>
                     </div>
                 </div>
