@@ -46,6 +46,7 @@ namespace IdeGames.Web
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IGamesService, GamesService>();
+            services.AddTransient<IHomeService, HomeService>();
 
             services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
             {

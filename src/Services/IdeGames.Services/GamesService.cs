@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using IdeGames.Data;
+using IdeGames.Data.Models;
 using IdeGames.Services.Contracts;
 using IdeGames.Services.Models.Models.Games;
 
@@ -27,6 +28,36 @@ namespace IdeGames.Services
                     Description = x.Description
                 }).FirstOrDefault();
             return games;
+        }
+
+        public IndexGamesViewModel GetGames()
+        {
+            var viewModel = this.Db.Games
+                .Select(x =>
+                    new GamesViewModel
+                    { 
+                        Id = x.Id,
+                        Name = x.Name,
+                        Price = x.Price
+                    });
+            var model = new IndexGamesViewModel
+            {
+                Games = viewModel
+            };
+
+            return model;
+        }
+
+        public Game CreateGame(CreateGameInputModel model)
+        {
+            var game = new Game
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Description = model.Description,
+                Price = model.Price
+            };
+            return game;
         }
     }
 }

@@ -20,26 +20,34 @@ namespace IdeGames.Web.Controllers
 
         public IActionResult Index()
         {
-            var viewModel = this.Db.Games
-                .Select(x =>
-                    new GamesViewModel
-                    { 
-                        Id = x.Id,
-                        Name = x.Name,
-                        Price = x.Price
-                    });
-            var model = new IndexGamesViewModel
-            {
-                Games = viewModel
-            };
+            var viewModel = gamesService.GetGames();
 
-            return View(model);
+            return View(viewModel);
         }
 
         public IActionResult Info(int id)
         {
             var game = this.gamesService.GetGameById(id);
             return this.View(game);
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Create()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Create(CreateGameInputModel model)
+        {
+            var game = gamesService.CreateGame(model);
+
+            this.Db.Add(game);
+
+            this.Db.SaveChanges();
+
+            return this.Redirect("/Administration/AdminIndex");
         }
 
         [Authorize(Roles = "Administrator")]

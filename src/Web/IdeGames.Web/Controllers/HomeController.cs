@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using IdeGames.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using IdeGames.Web.Models;
 using IdeGames.Services.Models.Models.Home;
@@ -9,22 +10,16 @@ namespace IdeGames.Web.Controllers
 {
     public class HomeController : BaseController
     {
+        private readonly IHomeService homeService;
+
+        public HomeController(IHomeService homeService)
+        {
+            this.homeService = homeService;
+        }
+
         public IActionResult Index()
         {
-            var viewModel = this.Db.News
-                .OrderByDescending(d => d.PublishedOn)
-                .Select(x =>
-                new NewsViewModel
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Content = x.Content,
-                    PublishedOn = x.PublishedOn
-                });
-            var model = new IndexViewModel
-            {
-                News = viewModel
-            };
+            var model = homeService.GetNews();
             return View(model);
         }
 
