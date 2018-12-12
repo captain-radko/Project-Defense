@@ -14,8 +14,6 @@ namespace IdeGames.Data.Models
 
         public string FullName { get; set; }
 
-        public byte[] ProfilePicture { get; set; }
-
         public DateTime RegisteredOn { get; set; }
 
         public ICollection<Game> Games { get; set; }

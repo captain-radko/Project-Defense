@@ -13,6 +13,7 @@ namespace IdeGames.Services.Models.Models.News
         public string Description { get; set; }
 
         [Required]
+        [Display(Name = "Published On")]
         public DateTime PublishedOn { get; set; }
     }
 }

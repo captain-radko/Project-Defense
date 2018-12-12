@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using IdeGames.Data.Models;
@@ -74,7 +75,8 @@ namespace IdeGames.Web.Areas.Identity.Pages.Account
                 {
                     FullName = Input.FullName, 
                     UserName = Input.Email, 
-                    Email = Input.Email
+                    Email = Input.Email,
+                    RegisteredOn = DateTime.UtcNow
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
