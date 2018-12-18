@@ -13,5 +13,7 @@ namespace IdeGames.Services.Contracts
         IndexGamesViewModel GetGames();
 
         Game CreateGame(CreateGameInputModel model);
+
+        UpdateGameInputModel LoadUpdateGame(int id);
     }
 }

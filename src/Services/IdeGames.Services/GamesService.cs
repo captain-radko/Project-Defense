@@ -38,7 +38,8 @@ namespace IdeGames.Services
                     { 
                         Id = x.Id,
                         Name = x.Name,
-                        Price = x.Price
+                        Price = x.Price,
+                        ImageUrl = x.ImageUrl
                     });
             var model = new IndexGamesViewModel
             {
@@ -58,6 +59,20 @@ namespace IdeGames.Services
                 Price = model.Price
             };
             return game;
+        }
+
+        public UpdateGameInputModel LoadUpdateGame(int id)
+        {
+            var viewModel = this.Db.Games
+                .Select(x => new UpdateGameInputModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    Price = x.Price
+                })
+                .FirstOrDefault(x => x.Id == id);
+            return viewModel;
         }
     }
 }

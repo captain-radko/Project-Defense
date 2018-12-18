@@ -51,6 +51,32 @@ namespace IdeGames.Web.Controllers
         }
 
         [Authorize(Roles = "Administrator")]
+        public IActionResult Edit(int id)
+        {
+            var game = gamesService.LoadUpdateGame(id);
+
+            return this.View(game);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Edit(UpdateGameInputModel model)
+        {
+            var game = this.Db.Games.FirstOrDefault(x => x.Id == model.Id);
+
+            if (game != null)
+            {
+                game.Id = model.Id;
+                game.Name = model.Name;
+                game.Description = model.Description;
+                game.Price = model.Price;
+                this.Db.SaveChanges();
+            }
+
+            return this.Redirect("/Administration/AdminIndex");
+        }
+
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int id)
         {
             var game = this.Db.Games.FirstOrDefault(g => g.Id == id);
