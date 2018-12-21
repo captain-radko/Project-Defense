@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using IdeGames.Data;
 using IdeGames.Data.Models;
 using IdeGames.Services.Contracts;
-using IdeGames.Services.Models.Models.Home;
 using IdeGames.Services.Models.Models.News;
 
 namespace IdeGames.Services
@@ -39,6 +37,10 @@ namespace IdeGames.Services
                 Content = model.Description,
                 PublishedOn = model.PublishedOn
             };
+            if (news == null)
+            {
+                throw new ApplicationException("Invalid information provided"); 
+            }
             return news;
         }
     }

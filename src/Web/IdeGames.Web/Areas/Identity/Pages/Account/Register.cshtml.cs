@@ -44,6 +44,10 @@ namespace IdeGames.Web.Areas.Identity.Pages.Account
             public string FullName { get; set; }
 
             [Required]
+            [DataType(DataType.Text)]
+            public string Username { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -73,8 +77,7 @@ namespace IdeGames.Web.Areas.Identity.Pages.Account
             {
                 var user = new IdeGamesUser
                 {
-                    FullName = Input.FullName, 
-                    UserName = Input.Email, 
+                    FullName = Input.FullName,  
                     Email = Input.Email,
                     RegisteredOn = DateTime.UtcNow
                 };

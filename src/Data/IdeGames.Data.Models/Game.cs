@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using IdeGames.Data.Common;
+﻿using IdeGames.Data.Common;
 
 namespace IdeGames.Data.Models
 {

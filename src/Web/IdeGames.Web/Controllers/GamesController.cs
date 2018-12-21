@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using IdeGames.Services.Contracts;
 using IdeGames.Services.Models.Models.Games;
+using IdeGames.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,7 +49,7 @@ namespace IdeGames.Web.Controllers
 
             this.Db.SaveChanges();
 
-            return this.Redirect("/Administration/AdminIndex");
+            return this.Redirect("/Games/Create");
         }
 
         [Authorize(Roles = "Administrator")]
@@ -73,7 +75,7 @@ namespace IdeGames.Web.Controllers
                 this.Db.SaveChanges();
             }
 
-            return this.Redirect("/Administration/AdminIndex");
+            return this.Redirect("/Games/Edit");
         }
 
         [Authorize(Roles = "Administrator")]
@@ -86,6 +88,11 @@ namespace IdeGames.Web.Controllers
             this.Db.SaveChanges();
 
             return this.Redirect("/Administration/AdminIndex");
+        }
+
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
     }
 }

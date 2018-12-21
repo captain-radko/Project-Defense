@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using IdeGames.Data.Common;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IdeGames.Services.Models.Models.News
 {
@@ -15,5 +16,7 @@ namespace IdeGames.Services.Models.Models.News
         [Required]
         [Display(Name = "Published On")]
         public DateTime PublishedOn { get; set; }
+
+        [TempData] public string StatusMessage { get; set; }
     }
 }

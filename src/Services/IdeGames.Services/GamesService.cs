@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using IdeGames.Data;
 using IdeGames.Data.Models;
 using IdeGames.Services.Contracts;
@@ -27,6 +25,10 @@ namespace IdeGames.Services
                     Price = x.Price,
                     Description = x.Description
                 }).FirstOrDefault();
+            if (games == null)
+            {
+                throw new ApplicationException("Invalid game Id");
+            }
             return games;
         }
 
@@ -45,7 +47,10 @@ namespace IdeGames.Services
             {
                 Games = viewModel
             };
-
+            if (viewModel == null)
+            {
+                throw new ApplicationException("No game found");
+            }
             return model;
         }
 
@@ -72,6 +77,10 @@ namespace IdeGames.Services
                     Price = x.Price
                 })
                 .FirstOrDefault(x => x.Id == id);
+            if (viewModel == null)
+            {
+                throw new ApplicationException("Invalid game Id");
+            }
             return viewModel;
         }
     }

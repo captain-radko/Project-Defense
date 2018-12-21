@@ -75,8 +75,6 @@ namespace IdeGames.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<byte[]>("ProfilePicture");
-
                     b.Property<DateTime>("RegisteredOn");
 
                     b.Property<string>("SecurityStamp");
@@ -85,6 +83,8 @@ namespace IdeGames.Data.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
+
+                    b.Property<string>("Username");
 
                     b.HasKey("Id");
 

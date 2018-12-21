@@ -27,6 +27,10 @@ namespace IdeGames.Services
                     Email = x.Email,
                     RegisteredOn = x.RegisteredOn
                 });
+            if (model == null)
+            {
+                throw new ApplicationException("Model cannot be null");
+            }
             var users = new UserViewModelCollection
             {
                 Users = model

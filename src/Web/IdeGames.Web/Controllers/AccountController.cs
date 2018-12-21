@@ -31,7 +31,7 @@ namespace IdeGames.Web.Controllers
 
             this.Db.SaveChanges();
 
-            return this.Redirect("/Administration/AdminIndex");
+            return this.Redirect("/Account/Index");
         }
     }
 }

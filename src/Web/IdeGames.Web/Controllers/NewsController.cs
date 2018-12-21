@@ -9,13 +9,13 @@ namespace IdeGames.Web.Controllers
 {
     public class NewsController : BaseController
     {
-        private readonly INewsService newsService;
-
         public NewsController(INewsService newsService)
         {
             this.newsService = newsService;
         }
 
+        private readonly INewsService newsService;
+        
         public IActionResult Details(int id)
         {
             var news = this.newsService.GetNewsById(id);
@@ -27,11 +27,11 @@ namespace IdeGames.Web.Controllers
         {
             var news = this.Db.News.FirstOrDefault(x => x.Id == id);
             
-            this.Db.Remove(news ?? throw new InvalidOperationException());
+            this.Db.Remove(news);
 
             this.Db.SaveChanges();
-
-            return this.Redirect("/Administration/AdminIndex");
+            
+            return this.Redirect("/Home/Index");
         }
 
         [Authorize(Roles = "Administrator")]
@@ -48,8 +48,8 @@ namespace IdeGames.Web.Controllers
             this.Db.News.Add(news);
 
             this.Db.SaveChanges();
-
-            return this.Redirect("/Administration/AdminIndex");
+            
+            return this.RedirectToPage("");
         }
     }
 }

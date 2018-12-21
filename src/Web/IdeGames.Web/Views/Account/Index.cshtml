@@ -8,8 +8,10 @@
 @{
     ViewData["Title"] = "Index";
 }
-
 <div style="margin-top: 50px">
+    <h1 align="center">
+        <strong style="color: #bf2d28">If you wish to delete your own account please logout after that !</strong>
+    </h1>
     <table class="table table-hover table-bordered">
         <thead style="background-color: #bf2d28">
         <tr>
@@ -31,6 +33,7 @@
                 <td>
                     <a id="disable" class="btn btn-danger" asp-controller="Account" asp-action="Delete" asp-route-id="@user.Id">Delete</a>
                 </td>
+
             </tr>
         }
         </tbody>

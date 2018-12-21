@@ -13,5 +13,8 @@ namespace IdeGames.Services.Models.Models.Games
 
         [Required]
         public string Description { get; set; }
+
+        [Required]
+        public string  ImageUrl { get; set; }
     }
 }
