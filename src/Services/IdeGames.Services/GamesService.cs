@@ -25,10 +25,6 @@ namespace IdeGames.Services
                     Price = x.Price,
                     Description = x.Description
                 }).FirstOrDefault();
-            if (games == null)
-            {
-                throw new ApplicationException("Invalid game Id");
-            }
             return games;
         }
 
@@ -59,6 +55,7 @@ namespace IdeGames.Services
             var game = new Game
             {
                 Id = model.Id,
+                ImageUrl = model.ImageUrl,
                 Name = model.Name,
                 Description = model.Description,
                 Price = model.Price
@@ -72,15 +69,10 @@ namespace IdeGames.Services
                 .Select(x => new UpdateGameInputModel()
                 {
                     Id = x.Id,
-                    Name = x.Name,
                     Description = x.Description,
                     Price = x.Price
                 })
                 .FirstOrDefault(x => x.Id == id);
-            if (viewModel == null)
-            {
-                throw new ApplicationException("Invalid game Id");
-            }
             return viewModel;
         }
     }

@@ -14,26 +14,30 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
+                        <input asp-for="Name" class="form-control"/>
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Price" class="control-label"></label>
-                        <input asp-for="Price" class="form-control" />
+                        <input asp-for="Price" class="form-control"/>
                         <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Description" class="control-label"></label>
-                        <input asp-for="Description" class="form-control" />
+                        <input asp-for="Description" class="form-control"/>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="ImageUrl" class="control-label"></label>
-                        <input asp-for="ImageUrl" class="form-control" />
+                        <p>
+                            <strong style="color: red">Please upload images with an exact size of 350x500 px!</strong>
+                            <strong style="color: darkred">Use <a href="https://imgur.com/">https://imgur.com/</a> (recommended)</strong>
+                        </p>
+                        <input asp-for="ImageUrl" class="form-control"/>
                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Add" class="btn btn-primary" />
+                        <input type="submit" value="Add" class="btn btn-primary"/>
                     </div>
                 </form>
             </div>

@@ -18,22 +18,7 @@
         {
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="hovereffect">
-                    @if (@game.Name == "IntelliJ IDEA")
-                    {
-                        <img class="img-responsive" src="/images/games/IntellijIDEALogo.png" alt="">
-                    }
-                    @if (@game.Name == "Visual Studio")
-                    {
-                        <img class="img-responsive" src="images/games/VisualStudioLogo.jpg" alt="">
-                    }
-                    @if (@game.Name == "WebStorm")
-                    {
-                        <img class="img-responsive" src="/images/games/WebStormLogo.png" alt="">
-                    }
-                    @if (@game.Name == "PyCharm")
-                    {
-                        <img class="img-responsive" src="/images/games/PyCharmLogo.jpg" alt="">
-                    }
+                    <img class="img-responsive" src="@game.ImageUrl" alt="">
                     <div class="overlay">
                         <a class="info" asp-controller="Games" asp-action="Info" asp-route-id="@game.Id">Info</a>
                         @if (SignInManager.IsSignedIn(User))
@@ -48,7 +33,7 @@
                 </div>
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
                 {
-                    <a class="btn btn-danger" style="margin-top: 5px" asp-controller="Games" asp-action="Delete" asp-route-id="@game.Id">Delete Game</a>
+                    <a class="btn btn-danger" style="margin-top: 5px; margin-bottom: 15px" asp-controller="Games" asp-action="Delete" asp-route-id="@game.Id">Delete Game</a>
                 }
             </div>
         }
