@@ -118,6 +118,22 @@ body {
 
 #qrCode { margin: 15px; }
 
+/* Footer here :D */
+
+#footer {
+    position: fixed;
+    height: 50px;
+    background-color: black;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+#gray {
+    color: gray;
+    margin-top: 15px;
+}
+
 /* Hide/rearrange for smaller screens */
 
 @media screen and (max-width: 767px) {
