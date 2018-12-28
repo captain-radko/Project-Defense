@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using IdeGames.Data;
 using IdeGames.Data.Models;
 using IdeGames.Web.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdeGames.Web.Controllers
@@ -19,14 +20,23 @@ namespace IdeGames.Web.Controllers
 
         public new IdeGamesContext Db { get; set; }
 
+        [Authorize]
         public IActionResult Index()
         {
             var cart = SessionHelper.GetObjectFromJason<List<Item>>(HttpContext.Session, "cart");
-            ViewBag.cart = cart;
-            ViewBag.total = cart.Sum(i => i.Game.Price * i.Quantity);
+            if (cart != null)
+            {
+                ViewBag.cart = cart;
+                ViewBag.total = cart.Sum(i => i.Game.Price * i.Quantity);
+            }
+            else
+            {
+                return Redirect("/Games/Index");
+            }
             return View();
         }
 
+        [Authorize]
         public IActionResult Buy(int id)
         {
             if (SessionHelper.GetObjectFromJason<List<Item>>(HttpContext.Session, "cart") == null)
@@ -61,6 +71,24 @@ namespace IdeGames.Web.Controllers
             }
 
             return this.RedirectToAction("Index");
+        }
+
+        public IActionResult Remove(int id)
+        {
+            var cart = SessionHelper.GetObjectFromJason<List<Item>>(HttpContext.Session, "cart");
+            int index = Exists(cart, id);
+            cart.RemoveAt(index);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Checkout()
+        {
+            var cart = SessionHelper.GetObjectFromJason<List<Item>>(HttpContext.Session, "cart");
+            cart.Clear();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            return RedirectToAction("Index");
         }
 
         private int Exists(List<Item> cart, int id)
