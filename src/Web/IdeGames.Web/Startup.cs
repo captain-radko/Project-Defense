@@ -4,6 +4,7 @@ using IdeGames.Data;
 using IdeGames.Data.Models;
 using IdeGames.Services;
 using IdeGames.Services.Contracts;
+using IdeGames.Web.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -55,7 +56,10 @@ namespace IdeGames.Web
                 microsoftOptions.ClientSecret = Configuration["ApplicationSecret"];
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddSessionStateTempDataProvider();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,6 +82,7 @@ namespace IdeGames.Web
 
             app.UseAuthentication();
 
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

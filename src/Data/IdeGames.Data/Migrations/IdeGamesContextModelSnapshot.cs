@@ -84,8 +84,6 @@ namespace IdeGames.Data.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
-                    b.Property<string>("Username");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -97,6 +95,23 @@ namespace IdeGames.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.Item", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("GameId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("IdeGames.Data.Models.News", b =>
@@ -231,6 +246,13 @@ namespace IdeGames.Data.Migrations
                     b.HasOne("IdeGames.Data.Models.IdeGamesUser")
                         .WithMany("Games")
                         .HasForeignKey("IdeGamesUserId");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.Item", b =>
+                {
+                    b.HasOne("IdeGames.Data.Models.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

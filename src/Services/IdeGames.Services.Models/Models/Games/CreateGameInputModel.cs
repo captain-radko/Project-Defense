@@ -11,7 +11,6 @@ namespace IdeGames.Services.Models.Models.Games
         [Required]
         public decimal Price { get; set; }
 
-        [Required]
         public string Description { get; set; }
 
         [Required]

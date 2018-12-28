@@ -18,12 +18,12 @@
         {
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="hovereffect">
-                    <img class="img-responsive" src="@game.ImageUrl" alt="">
+                    <img class="img-responsive" src="@game.ImageUrl" alt="" @*style="width: 350px; height: 400px"*@>
                     <div class="overlay">
                         <a class="info" asp-controller="Games" asp-action="Info" asp-route-id="@game.Id">Info</a>
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <a class="info" href="#">Add to cart</a>
+                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@game.Id" class="info">Add to cart</a>
 
                             <div class="info" style="margin-top: 200px">
                                 <strong>@game.Price$</strong>

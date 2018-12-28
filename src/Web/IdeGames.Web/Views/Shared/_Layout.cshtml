@@ -54,6 +54,12 @@
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                 </li>
                 @*TODO:Add security check here*@
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li>
+                        <a asp-area="" asp-controller="Cart" asp-action="Index">Cart</a>
+                    </li>
+                }
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
                 {
                     <li>
@@ -61,11 +67,11 @@
                     </li>
                 }
                 @*<li style="margin-top: 8px">
-                    <form class="form-inline my-2 my-lg-0 mt-5">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </li>*@
+            <form class="form-inline my-2 my-lg-0 mt-5">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </li>*@
             </ul>
             <partial name="_LoginPartial"/>
         </div>
