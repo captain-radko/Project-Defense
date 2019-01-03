@@ -66,6 +66,12 @@ namespace IdeGames.Web.Controllers
         {
             var game = this.Db.Games.FirstOrDefault(x => x.Id == model.Id);
 
+            var ids = this.Db.Games.Select(x => x.Id);
+            if (model.Id > ids.Last())
+            {
+                return this.RedirectToAction("Index");
+            }
+
             if (game != null)
             {
                 game.Id = model.Id;
@@ -88,11 +94,6 @@ namespace IdeGames.Web.Controllers
             this.Db.SaveChanges();
 
             return this.Redirect("/Administration/AdminIndex");
-        }
-
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
     }
 }

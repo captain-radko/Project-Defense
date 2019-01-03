@@ -16,7 +16,5 @@ namespace IdeGames.Services.Models.Models.News
         [Required]
         [Display(Name = "Published On")]
         public DateTime PublishedOn { get; set; }
-
-        [TempData] public string StatusMessage { get; set; }
     }
 }

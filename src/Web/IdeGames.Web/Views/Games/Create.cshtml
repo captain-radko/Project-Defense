@@ -29,10 +29,6 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="ImageUrl" class="control-label"></label>
-                        <p>
-                            <strong style="color: red">Please upload images with an exact size of 350x500 px!</strong>
-                            <strong style="color: darkred">Use <a href="https://imgur.com/">https://imgur.com/</a> (recommended)</strong>
-                        </p>
                         <input asp-for="ImageUrl" class="form-control"/>
                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
                     </div>

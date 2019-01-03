@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using IdeGames.Data.Common;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IdeGames.Services.Models.Models.Games
 {
@@ -15,5 +16,7 @@ namespace IdeGames.Services.Models.Models.Games
 
         [Required]
         public string  ImageUrl { get; set; }
+
+        [TempData]public string StatusMessage { get; set; }
     }
 }
