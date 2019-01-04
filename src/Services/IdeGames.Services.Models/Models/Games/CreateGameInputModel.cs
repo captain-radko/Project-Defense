@@ -16,7 +16,5 @@ namespace IdeGames.Services.Models.Models.Games
 
         [Required]
         public string  ImageUrl { get; set; }
-
-        [TempData]public string StatusMessage { get; set; }
     }
 }

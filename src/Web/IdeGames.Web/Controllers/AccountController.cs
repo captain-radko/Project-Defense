@@ -1,6 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using IdeGames.Services.Contracts;
+using IdeGames.Web.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,11 +27,16 @@ namespace IdeGames.Web.Controllers
         {
             var user = this.Db.Users.FirstOrDefault(i => i.Id == id);
 
-            this.Db.Remove(user ?? throw new InvalidOperationException());
+            if (user == null)
+            {
+                return this.CustomError(Constants.UserDoesNotExists);
+            }
+
+            this.Db.Remove(user);
 
             this.Db.SaveChanges();
 
-            return this.Redirect("/Account/Index");
+            return this.RedirectToAction("Index");
         }
     }
 }

@@ -40,7 +40,7 @@ namespace IdeGames.Web
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdeGamesUser, IdentityRole>()
+            services.AddIdentity<IdeGamesUser, IdentityRole>(opt => { opt.Password.RequireUppercase = false; })
                 .AddEntityFrameworkStores<IdeGamesContext>()
                 .AddDefaultTokenProviders();
 
@@ -64,7 +64,8 @@ namespace IdeGames.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider,
+            ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -79,6 +80,7 @@ namespace IdeGames.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
             app.UseStatusCodePagesWithReExecute("/StatusCode/{0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using IdeGames.Data;
+﻿using IdeGames.Data;
+using IdeGames.Services.Models.Models.Error;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdeGames.Web.Controllers
@@ -15,5 +12,11 @@ namespace IdeGames.Web.Controllers
         }
 
         protected IdeGamesContext Db { get; }
+
+        public IActionResult CustomError(string errorMessage)
+        {
+            object viewModel = new ErrorViewModel {Error = errorMessage};
+            return this.View(viewModel);
+        }
     }
 }

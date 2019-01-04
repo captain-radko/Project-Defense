@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using IdeGames.Services.Contracts;
 using IdeGames.Services.Models.Models.Games;
-using IdeGames.Web.Models;
+using IdeGames.Web.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -49,7 +45,7 @@ namespace IdeGames.Web.Controllers
 
             this.Db.SaveChanges();
 
-            return this.Redirect("/Games/Create");
+            return this.RedirectToAction("Create");
         }
 
         [Authorize(Roles = "Administrator")]
@@ -67,9 +63,10 @@ namespace IdeGames.Web.Controllers
             var game = this.Db.Games.FirstOrDefault(x => x.Id == model.Id);
 
             var ids = this.Db.Games.Select(x => x.Id);
+
             if (model.Id > ids.Last())
             {
-                return this.RedirectToAction("Index");
+                return this.CustomError(Constants.InvalidId);
             }
 
             if (game != null)
@@ -81,7 +78,7 @@ namespace IdeGames.Web.Controllers
                 this.Db.SaveChanges();
             }
 
-            return this.Redirect("/Games/Edit");
+            return this.RedirectToAction("Edit");
         }
 
         [Authorize(Roles = "Administrator")]
@@ -89,11 +86,15 @@ namespace IdeGames.Web.Controllers
         {
             var game = this.Db.Games.FirstOrDefault(g => g.Id == id);
 
-            this.Db.Remove(game ?? throw new InvalidOperationException());
+            if (game == null)
+            {
+                return this.CustomError(Constants.NullModelError);
+            }
+            this.Db.Remove(game);
 
             this.Db.SaveChanges();
 
-            return this.Redirect("/Administration/AdminIndex");
+            return this.RedirectToAction("Index");
         }
     }
 }
