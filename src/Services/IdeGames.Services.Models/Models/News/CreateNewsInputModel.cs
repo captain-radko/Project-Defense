@@ -8,9 +8,11 @@ namespace IdeGames.Services.Models.Models.News
     public class CreateNewsInputModel : BaseModel<int>
     {
         [Required]
+        [MinLength(10)]
         public string Name { get; set; }
 
         [Required]
+        [MinLength(200)]
         public string Description { get; set; }
 
         [Required]

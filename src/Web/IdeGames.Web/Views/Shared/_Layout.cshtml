@@ -44,9 +44,12 @@
                 <li>
                     <a asp-area="" asp-controller="Games" asp-action="Index">Store</a>
                 </li>
-                <li>
-                    <a asp-area="" asp-controller="" asp-action="">Forum</a>
-                </li>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li>
+                        <a asp-controller="Chat" asp-action="Index" asp>Chat</a>
+                    </li>
+                }
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="About">About</a>
                 </li>

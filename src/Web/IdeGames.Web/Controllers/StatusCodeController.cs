@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Diagnostics;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -22,7 +18,7 @@ namespace IdeGames.Web.Controllers
         {
             var reExecute = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
             _logger.LogInformation($"Unexpected Status Code: {statusCode}, OriginalPath: {reExecute.OriginalPath}");
-            return View(statusCode);
+            return View("Index", statusCode);
         }
     }
 }

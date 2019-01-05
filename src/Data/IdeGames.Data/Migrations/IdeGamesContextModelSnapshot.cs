@@ -42,6 +42,19 @@ namespace IdeGames.Data.Migrations
                     b.ToTable("Games");
                 });
 
+            modelBuilder.Entity("IdeGames.Data.Models.Group", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("GroupName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Groups");
+                });
+
             modelBuilder.Entity("IdeGames.Data.Models.IdeGamesUser", b =>
                 {
                     b.Property<string>("Id")
@@ -114,6 +127,23 @@ namespace IdeGames.Data.Migrations
                     b.ToTable("Items");
                 });
 
+            modelBuilder.Entity("IdeGames.Data.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AddedBy");
+
+                    b.Property<int>("GroupId");
+
+                    b.Property<string>("message");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("IdeGames.Data.Models.News", b =>
                 {
                     b.Property<int>("Id")
@@ -129,6 +159,21 @@ namespace IdeGames.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("News");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.UserGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GroupId");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UsersGroups");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

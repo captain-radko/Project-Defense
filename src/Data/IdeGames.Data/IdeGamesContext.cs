@@ -23,5 +23,13 @@ namespace IdeGames.Data
         public DbSet<Game> Games { get; set; }
 
         public DbSet<News> News { get; set; }
+
+        public DbSet<Item> Items { get; set; }
+
+        public DbSet<Group> Groups { get; set; }
+
+        public DbSet<Message> Messages { get; set; }
+
+        public DbSet<UserGroup> UsersGroups { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace IdeGames.Web.Controllers
         public IActionResult CustomError(string errorMessage)
         {
             object viewModel = new ErrorViewModel {Error = errorMessage};
-            return this.View(viewModel);
+            return this.View("CustomError", viewModel);
         }
     }
 }
