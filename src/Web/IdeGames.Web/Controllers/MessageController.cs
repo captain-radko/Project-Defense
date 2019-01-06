@@ -29,7 +29,6 @@ namespace IdeGames.Web.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public IActionResult Create([FromBody] MessageViewModel message)
         {
             Message new_message = new Message

@@ -1,5 +1,4 @@
-﻿//When a new group is created we will call the reloadGroup function
-let currentGroupId = null;
+﻿let currentGroupId = null;
 
 let pusher = new Pusher('6253f66941faa2dad217',
     {
@@ -12,6 +11,30 @@ channel.bind('new_group',
     function(data) {
         reloadGroup();
     });
+
+//Upload profile pic
+$(document).ready(function() {
+
+
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.avatar').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+    $(".file-upload").on('change',
+        function() {
+            readURL(this);
+        });
+});
+
 
 $("#CreateNewGroupButton").click(function() {
     let UserNames = $("input[name='UserName[]']:checked")

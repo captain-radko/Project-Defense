@@ -36,7 +36,6 @@ namespace IdeGames.Web.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Full name")]
             public string FullName { get; set; }
