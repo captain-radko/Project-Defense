@@ -1,53 +1,55 @@
 ﻿@{
     ViewData["Title"] = "Index";
 }
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <title>DotNet Group Chat</title>
-    @using Microsoft.AspNetCore.Identity
 
-    @inject UserManager<IdeGamesUser> UserManager
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<title>DotNet Group Chat</title>
+@using Microsoft.AspNetCore.Identity
 
-    <style type="text/css">
-        .group {
-            padding: 13px;
-            border-radius: 12px;
-            background: rgb(57, 125, 192);
-            margin: 5px 0px;
-            font-weight: bolder;
-            color: black;
-            cursor: pointer;
-        }
+@inject UserManager<IdeGamesUser> UserManager
 
-        .chat_body {
-            height: 520px;
-            overflow: scroll;
-        }
+<style type="text/css">
+    .group {
+        padding: 13px;
+        border-radius: 12px;
+        background: rgb(57, 125, 192);
+        margin: 5px 0px;
+        font-weight: bolder;
+        color: black;
+        cursor: pointer;
+    }
 
-        .less_padding { padding: 2px; }
+    .chat_body {
+        height: 520px;
+        overflow: scroll;
+    }
 
-        .chat_message {
-            padding: 13px;
-            border-radius: 12px;
-            width: 50%;
-            background: #85C1E9;
-            margin: 6px 4px;
-        }
+    .less_padding { padding: 2px; }
 
-        .chat_main {
-            background-color: #151515;
-            height: 520px;
-            padding: 0px;
-        }
+    .chat_message {
+        padding: 13px;
+        border-radius: 12px;
+        width: 50%;
+        background: #85C1E9;
+        margin: 6px 4px;
+    }
 
-        .group_main { background-color: #85C1E9; }
-    </style>
-</head>
+    .chat_main {
+        background-color: #151515;
+        height: 520px;
+        padding: 0px;
+    }
+
+    .group_main { background-color: #85C1E9; }
+
+    #Message {
+        resize: none;
+    }
+</style>
+
 <body>
 <h1 class="text-center">Welcome, @UserManager.GetUserName(User)</h1>
 <div class="container" style="background-color: lightgrey;">
@@ -131,4 +133,3 @@
 <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
-</html>

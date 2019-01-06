@@ -40,7 +40,14 @@ namespace IdeGames.Web
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdeGamesUser, IdentityRole>(opt => { opt.Password.RequireUppercase = false; })
+            services.AddIdentity<IdeGamesUser, IdentityRole>(opt =>
+                {
+                    opt.Password.RequireUppercase = false;
+                    opt.Password.RequireLowercase = false;
+                    opt.Password.RequireDigit = false;
+                    opt.Password.RequiredLength = 5;
+                    opt.Password.RequireNonAlphanumeric = false;
+                })
                 .AddEntityFrameworkStores<IdeGamesContext>()
                 .AddDefaultTokenProviders();
 
