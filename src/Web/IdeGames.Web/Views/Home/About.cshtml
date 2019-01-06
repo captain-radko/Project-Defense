@@ -1,7 +1,76 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<p>Use this area to provide additional information.</p>
+<style>
+    body { background: #e8e8e8 }
+
+    .portfolio {
+        padding: 6%;
+        text-align: center;
+    }
+
+    .heading {
+        background: #fff;
+        padding: 1%;
+        text-align: left;
+        box-shadow: 0px 0px 4px 0px #545b62;
+    }
+
+    .heading img { width: 10%; }
+
+    .bio-info {
+        padding: 5%;
+        background: #fff;
+        box-shadow: 0px 0px 4px 0px #b0b3b7;
+    }
+
+    .name {
+        font-family: 'Charmonman', cursive;
+        font-weight: 600;
+    }
+
+    .bio-image { text-align: center; }
+
+    .bio-image img { border-radius: 50%; }
+
+    .bio-content { text-align: left; }
+
+    .bio-content p {
+        font-weight: 600;
+        font-size: 30px;
+    }
+</style>
+
+<div class="container portfolio">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="heading">
+                <img src="https://image.ibb.co/cbCMvA/logo.png"/>
+            </div>
+        </div>
+    </div>
+    <div class="bio-info">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="bio-image">
+                            <img src="https://i.imgur.com/2asrUyJ.jpg" alt="image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="bio-content">
+                    <h1>It's me, Radko</h1>
+                    <h4>I am the developer of this project. I'm unskilled SoftUni student with a big interest in Web Development. I'm a not so fast learner, but hard worker and team player.</h4>
+                    <p>P.S I have no special talent, except drinking beer :D</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

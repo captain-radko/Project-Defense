@@ -3,6 +3,7 @@ using System.Linq;
 using IdeGames.Data;
 using IdeGames.Data.Models;
 using IdeGames.Services.Models.Models.Chat;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PusherServer;
@@ -28,6 +29,7 @@ namespace IdeGames.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create([FromBody] MessageViewModel message)
         {
             Message new_message = new Message

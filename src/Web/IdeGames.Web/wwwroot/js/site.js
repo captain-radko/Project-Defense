@@ -1,4 +1,19 @@
-﻿$("#CreateNewGroupButton").click(function() {
+﻿//When a new group is created we will call the reloadGroup function
+let currentGroupId = null;
+
+let pusher = new Pusher('6253f66941faa2dad217',
+    {
+        cluster: 'eu',
+        encrypted: true
+    });
+
+let channel = pusher.subscribe('group_chat');
+channel.bind('new_group',
+    function(data) {
+        reloadGroup();
+    });
+
+$("#CreateNewGroupButton").click(function() {
     let UserNames = $("input[name='UserName[]']:checked")
         .map(function() {
             return $(this).val();
@@ -113,18 +128,3 @@ function reloadGroup() {
             $("#groups").html(groups);
         });
 }
-
-//When a new group is created we will call the reloadGroup() function
-let currentGroupId = null;
-
-let pusher = new Pusher('6253f66941faa2dad217',
-    {
-        cluster: 'eu',
-        encrypted: true
-    });
-
-let channel = pusher.subscribe('group_chat');
-channel.bind('new_group',
-    function(data) {
-        reloadGroup();
-    });

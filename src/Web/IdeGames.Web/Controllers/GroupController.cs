@@ -41,6 +41,7 @@ namespace IdeGames.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create([FromBody] NewGroupViewModel group)
         {
             if (group == null || group.GroupName == "")
