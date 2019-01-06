@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdeGames.Data.Migrations
 {
     [DbContext(typeof(IdeGamesContext))]
-    [Migration("20181207164553_GameModelUpdate")]
-    partial class GameModelUpdate
+    [Migration("20190106123028_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,25 +20,6 @@ namespace IdeGames.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("IdeGames.Data.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AuthorId");
-
-                    b.Property<int?>("GameId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("GameId");
-
-                    b.ToTable("Comments");
-                });
 
             modelBuilder.Entity("IdeGames.Data.Models.Game", b =>
                 {
@@ -61,6 +42,19 @@ namespace IdeGames.Data.Migrations
                     b.HasIndex("IdeGamesUserId");
 
                     b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.Group", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("GroupName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("IdeGames.Data.Models.IdeGamesUser", b =>
@@ -96,8 +90,6 @@ namespace IdeGames.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<byte[]>("ProfilePicture");
-
                     b.Property<DateTime>("RegisteredOn");
 
                     b.Property<string>("SecurityStamp");
@@ -120,6 +112,40 @@ namespace IdeGames.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("IdeGames.Data.Models.Item", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("GameId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AddedBy");
+
+                    b.Property<int>("GroupId");
+
+                    b.Property<string>("message");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("IdeGames.Data.Models.News", b =>
                 {
                     b.Property<int>("Id")
@@ -135,6 +161,21 @@ namespace IdeGames.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("News");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.UserGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GroupId");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UsersGroups");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -247,22 +288,18 @@ namespace IdeGames.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("IdeGames.Data.Models.Comment", b =>
-                {
-                    b.HasOne("IdeGames.Data.Models.IdeGamesUser", "Author")
-                        .WithMany("Comments")
-                        .HasForeignKey("AuthorId");
-
-                    b.HasOne("IdeGames.Data.Models.Game")
-                        .WithMany("Comment")
-                        .HasForeignKey("GameId");
-                });
-
             modelBuilder.Entity("IdeGames.Data.Models.Game", b =>
                 {
                     b.HasOne("IdeGames.Data.Models.IdeGamesUser")
                         .WithMany("Games")
                         .HasForeignKey("IdeGamesUserId");
+                });
+
+            modelBuilder.Entity("IdeGames.Data.Models.Item", b =>
+                {
+                    b.HasOne("IdeGames.Data.Models.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

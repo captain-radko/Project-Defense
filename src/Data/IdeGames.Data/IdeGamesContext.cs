@@ -11,6 +11,12 @@ namespace IdeGames.Data
             optionsBuilder.UseSqlServer(@"Server=.\SQLExpress;Database=IdeGames;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<UserGroup>().ToTable("UsersGroups");
+        }
+
         public IdeGamesContext(DbContextOptions<IdeGamesContext> options)
             : base(options)
         {
