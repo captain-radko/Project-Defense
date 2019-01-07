@@ -140,3 +140,83 @@ body {
     /* Hide captions */
     .carousel-caption { display: none; }
 }
+
+/*About page*/
+
+.portfolio {
+    padding: 6%;
+    text-align: center;
+}
+
+.heading {
+    background: #fff;
+    padding: 1%;
+    text-align: left;
+    box-shadow: 0px 0px 4px 0px #545b62;
+}
+
+.heading img { width: 10%; }
+
+.bio-info {
+    padding: 5%;
+    background: #fff;
+    box-shadow: 0px 0px 4px 0px gray;
+}
+
+.name {
+    font-family: 'Charmonman', cursive;
+    font-weight: 600;
+}
+
+.bio-image { text-align: center; }
+
+.bio-image img { border-radius: 50%; }
+
+.bio-content { text-align: left; }
+
+.bio-content p {
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.btn-facebook {
+    background-color: #405D9D;
+    color: #fff;
+}
+
+/*Chat hub*/
+
+.group {
+    padding: 13px;
+    border-radius: 12px;
+    background: rgb(57, 125, 192);
+    margin: 5px 0px;
+    font-weight: bolder;
+    color: black;
+    cursor: pointer;
+}
+
+.chat_body {
+    height: 520px;
+    overflow: scroll;
+}
+
+.less_padding { padding: 2px; }
+
+.chat_message {
+    padding: 13px;
+    border-radius: 12px;
+    width: 50%;
+    background: #85C1E9;
+    margin: 6px 4px;
+}
+
+.chat_main {
+    background-color: lightgray;
+    height: 520px;
+    padding: 0px;
+}
+
+.group_main { background-color: #85C1E9; }
+
+#Message { resize: none; }
