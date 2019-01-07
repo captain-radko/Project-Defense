@@ -3,22 +3,9 @@
 @{
     ViewData["Title"] = "Profile";
 }
-@inject UserManager<IdeGamesUser> UserManager
 @Html.Partial("_StatusMessage", Model.StatusMessage)
 <div class="container">
-    <div style="margin-bottom: 20px" class="row">
-        <div class="col-sm-10">
-            <h1>@UserManager.GetUserName(User)</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="text-center">
-                <img src="https://i.imgur.com/CCmCrsK.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                <h5>Change profile picture here</h5>
-                <input type="file" class="text-center center-block file-upload">
-            </div>
-        </div>
+    <div style="margin-top: 30px" class="row">
         <div class="col-sm-9">
             <ul class="nav nav-tabs">
                 <li class="active">

@@ -7,9 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
 <title>DotNet Group Chat</title>
-@using Microsoft.AspNetCore.Identity
-
-@inject UserManager<IdeGamesUser> UserManager
 
 <style type="text/css">
     .group {
@@ -38,7 +35,7 @@
     }
 
     .chat_main {
-        background-color: #151515;
+        background-color: lightgray;
         height: 520px;
         padding: 0px;
     }
@@ -50,8 +47,7 @@
     }
 </style>
 
-<body>
-<h1 class="text-center">Welcome, @UserManager.GetUserName(User)</h1>
+<body style="margin-top: 25px">
 <div class="container" style="background-color: lightgrey;">
     <div class="row">
         <div class="col-md-2 less_padding">

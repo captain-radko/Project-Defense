@@ -1,13 +1,11 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
-@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style>
-    body { background: #e8e8e8 }
-
     .portfolio {
         padding: 6%;
         text-align: center;
@@ -25,7 +23,7 @@
     .bio-info {
         padding: 5%;
         background: #fff;
-        box-shadow: 0px 0px 4px 0px #b0b3b7;
+        box-shadow: 0px 0px 4px 0px gray;
     }
 
     .name {
@@ -43,6 +41,12 @@
         font-weight: 600;
         font-size: 30px;
     }
+
+    .btn-facebook {
+        background-color: #405D9D;
+        color: #fff;
+    }
+
 </style>
 
 <div class="container portfolio">
@@ -69,6 +73,13 @@
                     <h1>It's me, Radko</h1>
                     <h4>I am the developer of this project. I'm unskilled SoftUni student with a big interest in Web Development. I'm a not so fast learner, but hard worker and team player.</h4>
                     <p>P.S I have no special talent, except drinking beer :D</p>
+                    <hr style="background-color: gray; height: 1px"/>
+                    <p>
+                        Contacts:
+                        <a href="https://www.facebook.com/radoslav.radoev.52" class="btn btn-facebook">
+                            Facebook
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>

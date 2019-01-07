@@ -4,6 +4,7 @@ using IdeGames.Data;
 using IdeGames.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using PusherServer;
 
 namespace IdeGames.Web.Controllers
@@ -12,11 +13,15 @@ namespace IdeGames.Web.Controllers
     {
         private readonly IdeGamesContext _context;
         private readonly UserManager<IdeGamesUser> _userManager;
+        private readonly IConfiguration _configuration;
 
-        public AuthController(IdeGamesContext context, UserManager<IdeGamesUser> userManager)
+        public AuthController(IdeGamesContext context
+            , UserManager<IdeGamesUser> userManager
+            , IConfiguration configuration)
         {
             _context = context;
             _userManager = userManager;
+            _configuration = configuration;
         }
 
         [HttpPost]
@@ -45,13 +50,13 @@ namespace IdeGames.Web.Controllers
             {
                 var options = new PusherOptions
                 {
-                    Cluster = "eu",
+                    Cluster = _configuration["PUSHER_APP_CLUSTER"],
                     Encrypted = true
                 };
                 var pusher = new Pusher(
-                    "685221",
-                    "6253f66941faa2dad217",
-                    "8780cdd3d95f6032e1dd",
+                    _configuration["PUSHER_APP_ID"],
+                    _configuration["PUSHER_APP_KEY"],
+                    _configuration["PUSHER_APP_SECRET"],
                     options
                 );
 
