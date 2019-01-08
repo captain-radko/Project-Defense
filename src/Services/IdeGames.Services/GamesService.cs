@@ -3,6 +3,7 @@ using System.Linq;
 using IdeGames.Data;
 using IdeGames.Data.Models;
 using IdeGames.Services.Contracts;
+using IdeGames.Services.Mapping;
 using IdeGames.Services.Models.Models.Games;
 
 namespace IdeGames.Services
@@ -19,26 +20,14 @@ namespace IdeGames.Services
         public GamesDetailsViewModel GetGameById(int id)
         {
             var games = this.Db.Games.Where(i => i.Id == id)
-                .Select(x => new GamesDetailsViewModel
-                {
-                    Name = x.Name,
-                    Price = x.Price,
-                    Description = x.Description
-                }).FirstOrDefault();
+                .To<GamesDetailsViewModel>().FirstOrDefault();
             return games;
         }
 
         public IndexGamesViewModel GetGames()
         {
             var viewModel = this.Db.Games
-                .Select(x =>
-                    new GamesViewModel
-                    { 
-                        Id = x.Id,
-                        Name = x.Name,
-                        Price = x.Price,
-                        ImageUrl = x.ImageUrl
-                    });
+                .To<GamesViewModel>();
             var model = new IndexGamesViewModel
             {
                 Games = viewModel
@@ -66,12 +55,7 @@ namespace IdeGames.Services
         public UpdateGameInputModel LoadUpdateGame(int id)
         {
             var viewModel = this.Db.Games
-                .Select(x => new UpdateGameInputModel()
-                {
-                    Id = x.Id,
-                    Description = x.Description,
-                    Price = x.Price
-                })
+                .To<UpdateGameInputModel>()
                 .FirstOrDefault(x => x.Id == id);
             return viewModel;
         }

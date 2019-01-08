@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using IdeGames.Data.Common;
+using IdeGames.Data.Models;
+using IdeGames.Services.Mapping;
 
 namespace IdeGames.Services.Models.Models.Account
 {
-    public class UserViewModel : BaseModel<string>
+    public class UserViewModel : BaseModel<string>, IMapFrom<IdeGamesUser>
     {
         [Required]
         public string FullName { get; set; }

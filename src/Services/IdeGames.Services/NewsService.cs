@@ -3,6 +3,7 @@ using System.Linq;
 using IdeGames.Data;
 using IdeGames.Data.Models;
 using IdeGames.Services.Contracts;
+using IdeGames.Services.Mapping;
 using IdeGames.Services.Models.Models.News;
 
 namespace IdeGames.Services
@@ -19,12 +20,7 @@ namespace IdeGames.Services
         public NewsDetailsViewModel GetNewsById(int id)
         {
             var news = this.Db.News.Where(x => x.Id == id)
-                .Select(x => new NewsDetailsViewModel
-                {
-                    Name = x.Name,
-                    Content = x.Content,
-                    PublishedOn = x.PublishedOn
-                }).FirstOrDefault();
+                .To<NewsDetailsViewModel>().FirstOrDefault();
             return news;
         }
 

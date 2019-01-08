@@ -1,6 +1,9 @@
-﻿namespace IdeGames.Services.Models.Models.Games
+﻿using IdeGames.Data.Models;
+using IdeGames.Services.Mapping;
+
+namespace IdeGames.Services.Models.Models.Games
 {
-    public class GamesDetailsViewModel
+    public class GamesDetailsViewModel : IMapFrom<Game>
     {
         public string Name { get; set; }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using IdeGames.Data;
 using IdeGames.Services.Contracts;
+using IdeGames.Services.Mapping;
 using IdeGames.Services.Models.Models.Account;
 
 namespace IdeGames.Services
@@ -19,14 +20,7 @@ namespace IdeGames.Services
 
         public UserViewModelCollection GetUsers()
         {
-            var model = this.Db.Users
-                .Select(x => new UserViewModel
-                {
-                    Id = x.Id.ToString(),
-                    FullName = x.FullName,
-                    Email = x.Email,
-                    RegisteredOn = x.RegisteredOn
-                });
+            var model = this.Db.Users.To<UserViewModel>();
             if (model == null)
             {
                 throw new ApplicationException("Model cannot be null");

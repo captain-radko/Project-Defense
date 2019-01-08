@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using IdeGames.Data.Common;
 using IdeGames.Data.Models;
+using IdeGames.Services.Mapping;
 
 namespace IdeGames.Services.Models.Models.Games
 {
-    public class GamesViewModel : BaseModel<int>
+    public class GamesViewModel : BaseModel<int>, IMapFrom<Game>
     {
         public string Name { get; set; }
 

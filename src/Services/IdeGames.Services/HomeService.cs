@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using IdeGames.Data;
 using IdeGames.Services.Contracts;
+using IdeGames.Services.Mapping;
 using IdeGames.Services.Models.Models.Home;
 
 namespace IdeGames.Services
@@ -18,14 +19,7 @@ namespace IdeGames.Services
         {
             var viewModel = this.Db.News
                 .OrderByDescending(d => d.PublishedOn)
-                .Select(x =>
-                    new NewsViewModel
-                    {
-                        Id = x.Id,
-                        Name = x.Name,
-                        Content = x.Content,
-                        PublishedOn = x.PublishedOn
-                    });
+                .To<NewsViewModel>();
             var model = new IndexViewModel
             {
                 News = viewModel

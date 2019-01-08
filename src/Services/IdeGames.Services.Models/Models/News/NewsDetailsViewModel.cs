@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using IdeGames.Data.Common;
-using IdeGames.Services.Models.Models.Home;
+using IdeGames.Services.Mapping;
 
 namespace IdeGames.Services.Models.Models.News
 {
-    public class NewsDetailsViewModel : BaseModel<int>
+    public class NewsDetailsViewModel : BaseModel<int>, IMapFrom<Data.Models.News>
     {
         public string Name { get; set; }
 
