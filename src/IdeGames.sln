@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdeGames.Services", "Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdeGames.Services.Models", "Services\IdeGames.Services.Models\IdeGames.Services.Models.csproj", "{6B3C4417-5F90-4C87-B86E-3F75C13C69A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeGames.Services.Mapping", "Services\IdeGames.Services.Mapping\IdeGames.Services.Mapping.csproj", "{F854BE58-21F5-4EC3-AAF0-7B56BBFAE5DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{6B3C4417-5F90-4C87-B86E-3F75C13C69A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B3C4417-5F90-4C87-B86E-3F75C13C69A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B3C4417-5F90-4C87-B86E-3F75C13C69A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F854BE58-21F5-4EC3-AAF0-7B56BBFAE5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F854BE58-21F5-4EC3-AAF0-7B56BBFAE5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F854BE58-21F5-4EC3-AAF0-7B56BBFAE5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F854BE58-21F5-4EC3-AAF0-7B56BBFAE5DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{3EA1E537-B724-4007-909A-FA59ED45F0FB} = {2D03BD43-AF3E-4FDC-AE3D-D41859295371}
 		{F160977D-ABE3-4594-9AA4-5BBA6EB2304C} = {45A38272-5499-47F1-B51C-309CA07C57B3}
 		{6B3C4417-5F90-4C87-B86E-3F75C13C69A0} = {45A38272-5499-47F1-B51C-309CA07C57B3}
+		{F854BE58-21F5-4EC3-AAF0-7B56BBFAE5DB} = {45A38272-5499-47F1-B51C-309CA07C57B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96020B6B-9870-40A4-8996-E605A45396E1}
