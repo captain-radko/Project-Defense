@@ -7,6 +7,8 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
     <title>@ViewData["Title"] - IdeGames.Web</title>
 
 
@@ -54,12 +56,6 @@
                     <a asp-area="" asp-controller="Home" asp-action="About">About</a>
                 </li>
                 @*TODO:Add security check here*@
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    <li>
-                        <a asp-area="" asp-controller="Cart" asp-action="Index">Cart</a>
-                    </li>
-                }
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
                 {
                     <li>

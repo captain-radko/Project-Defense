@@ -184,6 +184,16 @@ body {
     color: #fff;
 }
 
+#google {
+    background-color: #DD4B39;
+    color: #fff;
+}
+
+#git {
+    background-color: #444444;
+    color: #fff;
+}
+
 /*Chat hub*/
 
 .group {

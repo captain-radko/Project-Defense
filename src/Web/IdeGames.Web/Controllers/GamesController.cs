@@ -48,6 +48,7 @@ namespace IdeGames.Web.Controllers
             return this.RedirectToAction("Create");
         }
 
+        [HttpGet]
         [Authorize(Roles = "Administrator")]
         public IActionResult Edit(int id)
         {

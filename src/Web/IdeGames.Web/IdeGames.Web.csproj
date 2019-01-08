@@ -73,7 +73,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Administration\" />
     <Folder Include="wwwroot\images\games\" />
   </ItemGroup>
 
