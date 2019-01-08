@@ -32,6 +32,8 @@ namespace IdeGames.Data
 
         public DbSet<Item> Items { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
         public DbSet<Group> Groups { get; set; }
 
         public DbSet<Message> Messages { get; set; }

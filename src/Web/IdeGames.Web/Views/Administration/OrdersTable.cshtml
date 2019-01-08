@@ -1,0 +1,41 @@
+﻿@model IdeGames.Services.Models.Models.Orders.OrdersCollection
+
+@{
+    ViewData["Title"] = "OrdersTable";
+}
+
+<h2>OrdersTable</h2>
+
+<div style="margin-top: 50px">
+    <table class="table table-hover table-bordered">
+        <thead style="background-color: lightblue">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Ordered on</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+            <tr style="margin-top: 3px">
+                <td>@order.Id</td>
+                <td>@order.Name</td>
+                <td>@order.Email</td>
+                <td>@order.OrderedOn</td>
+                <td>@order.PhoneNumber</td>
+                <td>@order.Address</td>
+                <td>
+                    <p align="center">
+                        <a class="btn btn-info">Details</a>
+                    </p>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

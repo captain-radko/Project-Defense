@@ -55,7 +55,7 @@ namespace IdeGames.Web.Controllers
 
             this.Db.SaveChanges();
             
-            return this.RedirectToAction("Create");
+            return this.RedirectToPage("/Home/Index");
         }
     }
 }

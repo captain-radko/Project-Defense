@@ -6,10 +6,10 @@ using IdeGames.Services;
 using IdeGames.Services.Contracts;
 using IdeGames.Services.Mapping;
 using IdeGames.Services.Models.Models.Account;
-using IdeGames.Services.Models.Models.Chat;
 using IdeGames.Services.Models.Models.Games;
 using IdeGames.Services.Models.Models.Home;
 using IdeGames.Services.Models.Models.News;
+using IdeGames.Services.Models.Models.Orders;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -43,7 +43,8 @@ namespace IdeGames.Web
                 typeof(IndexGamesViewModel).Assembly,
                 typeof(UpdateGameInputModel).Assembly,
                 typeof(CreateNewsInputModel).Assembly,
-                typeof(NewsDetailsViewModel).Assembly
+                typeof(NewsDetailsViewModel).Assembly,
+                typeof(OrdersTable).Assembly
             );
 
             services.Configure<CookiePolicyOptions>(options =>
@@ -74,6 +75,7 @@ namespace IdeGames.Web
             services.AddTransient<IGamesService, GamesService>();
             services.AddTransient<IHomeService, HomeService>();
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IOrderService, OrderService>();
 
             services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
             {

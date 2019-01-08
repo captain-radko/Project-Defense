@@ -2,6 +2,8 @@
 using System.Linq;
 using IdeGames.Data;
 using IdeGames.Data.Models;
+using IdeGames.Services.Contracts;
+using IdeGames.Services.Models.Models.Account;
 using IdeGames.Web.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +12,11 @@ namespace IdeGames.Web.Controllers
 {
     public class CartController : BaseController
     {
-        public CartController()
+        private readonly IOrderService _orderService;
+
+        public CartController(IOrderService orderService)
         {
+            _orderService = orderService;
             this.Db = new IdeGamesContext();
         }
 
@@ -85,7 +90,25 @@ namespace IdeGames.Web.Controllers
             var cart = SessionHelper.GetObjectFromJason<List<Item>>(HttpContext.Session, "cart");
             cart.Clear();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-            return RedirectToAction("Index");
+            return RedirectToAction("FinalizeOrder");
+        }
+
+        [Authorize]
+        public IActionResult FinalizeOrder()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult FinalizeOrder(CredentialsInputModel credentials)
+        {
+            var order = _orderService.SendOrder(credentials);
+
+            this.Db.Add(order);
+
+            this.Db.SaveChanges();
+
+            return this.Redirect("/Home/Index");
         }
 
         private int Exists(List<Item> cart, int id)
