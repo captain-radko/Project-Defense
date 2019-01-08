@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\IdeGames.Data.Common\IdeGames.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\IdeGames.Data.Models\IdeGames.Data.Models.csproj" />
+    <ProjectReference Include="..\IdeGames.Services.Mapping\IdeGames.Services.Mapping.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,6 +4,8 @@ using IdeGames.Data;
 using IdeGames.Data.Models;
 using IdeGames.Services;
 using IdeGames.Services.Contracts;
+using IdeGames.Services.Mapping;
+using IdeGames.Services.Models.Models.Home;
 using IdeGames.Web.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +31,10 @@ namespace IdeGames.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AutoMapperConfig.RegisterMappings(
+                typeof(NewsViewModel).Assembly
+                );
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
