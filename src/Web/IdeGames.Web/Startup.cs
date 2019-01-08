@@ -5,7 +5,11 @@ using IdeGames.Data.Models;
 using IdeGames.Services;
 using IdeGames.Services.Contracts;
 using IdeGames.Services.Mapping;
+using IdeGames.Services.Models.Models.Account;
+using IdeGames.Services.Models.Models.Chat;
+using IdeGames.Services.Models.Models.Games;
 using IdeGames.Services.Models.Models.Home;
+using IdeGames.Services.Models.Models.News;
 using IdeGames.Web.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,8 +36,19 @@ namespace IdeGames.Web
         public void ConfigureServices(IServiceCollection services)
         {
             AutoMapperConfig.RegisterMappings(
-                typeof(NewsViewModel).Assembly
-                );
+                typeof(NewsViewModel).Assembly,
+                typeof(UserViewModel).Assembly,
+                typeof(MessageViewModel).Assembly,
+                typeof(NewGroupViewModel).Assembly,
+                typeof(UserGroupViewModel).Assembly,
+                typeof(CreateGameInputModel).Assembly,
+                typeof(GamesDetailsViewModel).Assembly,
+                typeof(GamesViewModel).Assembly,
+                typeof(IndexGamesViewModel).Assembly,
+                typeof(UpdateGameInputModel).Assembly,
+                typeof(CreateNewsInputModel).Assembly,
+                typeof(NewsDetailsViewModel).Assembly
+            );
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -111,7 +126,7 @@ namespace IdeGames.Web
 
             app.UseSession();
             app.UseMvc(routes =>
-            {             
+            {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
