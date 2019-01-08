@@ -1,48 +1,10 @@
-﻿let currentGroupId = null;
-
-let pusher = new Pusher('6253f66941faa2dad217',
-    {
-        cluster: 'eu',
-        encrypted: true
-    });
-
-let channel = pusher.subscribe('group_chat');
-channel.bind('new_group',
-    function(data) {
-        reloadGroup();
-    });
-
-//Upload profile pic
-$(document).ready(function() {
-
-
-    var readURL = function(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('.avatar').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-
-    $(".file-upload").on('change',
-        function() {
-            readURL(this);
-        });
-});
-
-
-$("#CreateNewGroupButton").click(function() {
-    let UserNames = $("input[name='UserName[]']:checked")
+﻿$("#CreateNewGroupButton").click(function() {
+    var UserNames = $("input[name='UserName[]']:checked")
         .map(function() {
             return $(this).val();
         }).get();
 
-    let data = {
+    var data = {
         GroupName: $("#GroupName").val(),
         UserNames: UserNames
     };
@@ -78,7 +40,7 @@ $("#groups").on("click",
                 let message = "";
 
                 data.forEach(function(data) {
-                    let position = (data.addedBy === $("#UserName").val()) ? " float-right" : "";
+                    let position = (data.addedBy == $("#UserName").val()) ? " float-right" : "";
                     message += `<div class="row chat_message` +
                         position +
                         `"><b>` +
@@ -96,7 +58,7 @@ $("#groups").on("click",
 
             group_channel.bind('new_message',
                 function(data) {
-                    if (currentGroupId === data.new_message.GroupId) {
+                    if (currentGroupId == data.new_message.GroupId) {
 
                         $(".chat_body").append(`<div class="row chat_message"><b>` +
                             data.new_message.AddedBy +
@@ -151,3 +113,18 @@ function reloadGroup() {
             $("#groups").html(groups);
         });
 }
+
+//When a new group is created we will call the reloadGroup() function
+let currentGroupId = null;
+
+var pusher = new Pusher('6253f66941faa2dad217',
+    {
+        cluster: 'eu',
+        encrypted: true
+    });
+
+var channel = pusher.subscribe('group_chat');
+channel.bind('new_group',
+    function(data) {
+        reloadGroup();
+    });

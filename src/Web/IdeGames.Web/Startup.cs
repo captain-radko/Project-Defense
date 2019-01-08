@@ -10,7 +10,6 @@ using IdeGames.Services.Models.Models.Chat;
 using IdeGames.Services.Models.Models.Games;
 using IdeGames.Services.Models.Models.Home;
 using IdeGames.Services.Models.Models.News;
-using IdeGames.Web.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,9 +37,6 @@ namespace IdeGames.Web
             AutoMapperConfig.RegisterMappings(
                 typeof(NewsViewModel).Assembly,
                 typeof(UserViewModel).Assembly,
-                typeof(MessageViewModel).Assembly,
-                typeof(NewGroupViewModel).Assembly,
-                typeof(UserGroupViewModel).Assembly,
                 typeof(CreateGameInputModel).Assembly,
                 typeof(GamesDetailsViewModel).Assembly,
                 typeof(GamesViewModel).Assembly,

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IdeGames.Services.Models.Models.Chat
+﻿namespace IdeGames.Services.Models.Models.Chat
 {
     public class UserGroupViewModel
     {
