@@ -34,6 +34,7 @@ namespace IdeGames.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Register models here for a faster mapping 
             AutoMapperConfig.RegisterMappings(
                 typeof(NewsViewModel).Assembly,
                 typeof(UserViewModel).Assembly,
@@ -44,7 +45,8 @@ namespace IdeGames.Web
                 typeof(UpdateGameInputModel).Assembly,
                 typeof(CreateNewsInputModel).Assembly,
                 typeof(NewsDetailsViewModel).Assembly,
-                typeof(OrdersTable).Assembly
+                typeof(OrdersTable).Assembly,
+                typeof(CredentialsInputModel).Assembly
             );
 
             services.Configure<CookiePolicyOptions>(options =>

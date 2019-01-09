@@ -35,6 +35,7 @@ namespace IdeGames.Web.Controllers
             {
                 return Redirect("/Games/Index");
             }
+
             return View();
         }
 
@@ -69,6 +70,7 @@ namespace IdeGames.Web.Controllers
                 {
                     cart[index].Quantity++;
                 }
+
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
 
@@ -90,6 +92,7 @@ namespace IdeGames.Web.Controllers
             return RedirectToAction("FinalizeOrder");
         }
 
+        [HttpGet]
         [Authorize]
         public IActionResult FinalizeOrder()
         {
@@ -104,7 +107,7 @@ namespace IdeGames.Web.Controllers
         {
             var order = _orderService.SendOrder(credentials);
 
-            if (order != null)
+            if (order != null && ModelState.IsValid)
             {
                 this.Db.Add(order);
             }

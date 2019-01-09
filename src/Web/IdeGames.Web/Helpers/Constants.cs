@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace IdeGames.Web.Helpers
+﻿namespace IdeGames.Web.Helpers
 {
     public class Constants
     {
@@ -12,5 +7,7 @@ namespace IdeGames.Web.Helpers
         public const string NullModelError = "Model doesn't exists or is already deleted";
 
         public const string UserDoesNotExists = "This user doesn't exists or is already deleted";
+
+        public const string EmptyForm = "Please fill the blank";
     }
 }
