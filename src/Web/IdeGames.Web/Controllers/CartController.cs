@@ -87,15 +87,15 @@ namespace IdeGames.Web.Controllers
 
         public IActionResult Checkout()
         {
-            var cart = SessionHelper.GetObjectFromJason<List<Item>>(HttpContext.Session, "cart");
-            cart.Clear();
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return RedirectToAction("FinalizeOrder");
         }
 
         [Authorize]
         public IActionResult FinalizeOrder()
         {
+            var cart = SessionHelper.GetObjectFromJason<List<Item>>(HttpContext.Session, "cart");
+            cart.Clear();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return this.View();
         }
 
@@ -104,7 +104,10 @@ namespace IdeGames.Web.Controllers
         {
             var order = _orderService.SendOrder(credentials);
 
-            this.Db.Add(order);
+            if (order != null)
+            {
+                this.Db.Add(order);
+            }
 
             this.Db.SaveChanges();
 

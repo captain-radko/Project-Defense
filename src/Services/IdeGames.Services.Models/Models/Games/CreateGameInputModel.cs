@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using IdeGames.Data.Common;
-using Microsoft.AspNetCore.Mvc;
 
 namespace IdeGames.Services.Models.Models.Games
 {
     public class CreateGameInputModel : BaseModel<int>
     {
         [Required]
+        [MinLength(4)]
+        [MaxLength(15)]
         public string Name { get; set; }
 
         [Required]

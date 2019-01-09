@@ -4,7 +4,7 @@
     ViewData["Title"] = "OrdersTable";
 }
 
-<h2>OrdersTable</h2>
+<h2 align="center">Orders Table</h2>
 
 <div style="margin-top: 50px">
     <table class="table table-hover table-bordered">
@@ -30,9 +30,7 @@
                 <td>@order.PhoneNumber</td>
                 <td>@order.Address</td>
                 <td>
-                    <p align="center">
-                        <a class="btn btn-info">Details</a>
-                    </p>
+                    <a asp-controller="" asp-action="" class="btn btn-info">Preview</a>
                 </td>
             </tr>
             }

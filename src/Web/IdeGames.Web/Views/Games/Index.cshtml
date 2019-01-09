@@ -42,6 +42,7 @@
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
                 {
                     <a class="btn btn-danger" style="margin-top: 5px; margin-bottom: 15px" asp-controller="Games" asp-action="Delete" asp-route-id="@game.Id">Delete Game</a>
+                    <a class="btn btn-success" style="margin-top: 5px; margin-bottom: 15px" asp-controller="Games" asp-action="Edit" asp-route-id="@game.Id">Update Game</a>
                 }
             </div>
         }

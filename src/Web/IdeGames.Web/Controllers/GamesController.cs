@@ -72,14 +72,14 @@ namespace IdeGames.Web.Controllers
 
             if (game != null)
             {
-                game.Id = model.Id;
                 game.Name = model.Name;
                 game.Description = model.Description;
+                game.ImageUrl = model.ImageUrl;
                 game.Price = model.Price;
                 this.Db.SaveChanges();
             }
 
-            return this.RedirectToAction("Edit");
+            return this.RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Administrator")]
